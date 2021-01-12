@@ -34,10 +34,6 @@ USE learnOnlineDB;
 select * from Teachers;
 
 USE learnOnlineDB;
-insert into  Teachers(first_name, last_name, e_mail, phone, gender, likes, aviable_after_lesson) 
-                values ('ggg', 'gggggg', 'yy@gmail.com', '0504445544' 'male', 0, 1 )USE learnOnlineDB;
-
-USE learnOnlineDB;
 
 insert into  Teachers(first_name,last_name, e_mail,phone,gender, likes, aviable_after_lesson) 
                 values ('aaa','yyy', 'yy@gmail.com','0504144488','male', 0 , 1)
