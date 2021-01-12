@@ -13,11 +13,3 @@ def connect_to_DB():
     )
     return connection
 
-
-# def connect_to_DB():
-#     con = pymysql.connect(host = 'localhost',
-#                       user = 'root',
-#                       passwd =  '',
-#                       db = 'learnonlinedb')
-    
-#     return con

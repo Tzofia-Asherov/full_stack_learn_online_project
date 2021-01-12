@@ -280,13 +280,21 @@
             <div class="row text-center">
 
                 <div class="col-lg-12">
-                    <form class="checkdomain form-inline" >
+                    <form class="checkdomain form-inline" method ="get" action="/teachers">
                         <div class="checkdomain-wrapper">
                             <div class="form-group">
                                 <label class="sr-only" for="domainnamehere">Domain name</label>
                                 <input type="text" class="form-control" id="domainnamehere" placeholder="Enter domain name here..">
+								<p>choose subject for learning:</p>&nbsp&nbsp&nbsp&nbsp
+
+									{% for subject in data["subjects"]%}
+								  <input type="radio" id="{{subject.get('id')}}" name="subject" value="{{subject.get('id')}}"/><br>
+								  <label for="{{subject.get('id')}}">{{subject.get('description')}}</label><br>&nbsp&nbsp&nbsp
+									{%endfor%}
+
                                 <button type="submit" class="btn btn-primary grd1"><i class="fa fa-search"></i></button>
                             </div>
+
                             <hr>
                             <div class="clearfix"></div>
                             <div class="checkbox checkbox-warning">

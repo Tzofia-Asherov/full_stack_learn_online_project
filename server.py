@@ -8,12 +8,9 @@ app = Flask(__name__, static_url_path='', static_folder='static', template_folde
 
 @app.route('/')
 def root():
-    dict_subjects = subject_model.get_subjects()
-    return render_template('index.html', data=dict_subjects)
-    #return render_template('index.html',t={"name":"hellooooooooooooo"})
-    #return render_template('register_teacher.html',t={"name":"hellooooooooooooo"})
+    subject_lst = subject_model.get_all()
+    return render_template('index.html', data={"name": "hellooooooooooooo", "subjects": subject_lst, "teachers": []})    
 
-    
 
 @app.route('/teachers', methods=["POST"])
 def add_teacher():
@@ -34,8 +31,14 @@ def add_teacher():
 
         
 
-
+@app.route('/teachers', methods=["GET"])
+def get_teachers():
+    subject_id = request.args.get("subject")
+    gender = request.args.get("gender")
+    teacher_lst = teacher_model.get_by_subject(subject_id,gender)
+    subject_lst = subject_model.get_all()
+    return render_template('pricing.html', data={"teachers": teacher_lst, "subjects": subject_lst })
 
 
 if __name__ == "__main__":
-    app.run(port=3010)
+    app.run(port=3010, debug=True)
