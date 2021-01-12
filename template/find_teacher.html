@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>QuickCloud - Hosting Responsive HTML5 Template</title>  
+    <title>Register as Teacher</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -32,10 +32,6 @@
     <!-- Modernizer for Portfolio -->
     <script src="js/modernizer.js"></script>
 
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 <body class="host_version"> 
@@ -131,7 +127,7 @@
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="/">
 					<img src="images/logo-hosting.png" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
@@ -141,10 +137,10 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
 						<li class="nav-item"><a class="nav-link" href="features.html">Features </a></li>
-						<li class="nav-item dropdown">
+						<!-- <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Hosting </a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="hosting.html">Web Hosting </a>
@@ -156,10 +152,10 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="domain.html">Domain</a></li>
 						<li class="nav-item active"><a class="nav-link" href="pricing.html">Pricing</a></li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li> -->
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-                        <li><a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login"><span>Customer Login</span></a></li>
+                        <li><a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login"><span>Teacher Login</span></a></li>
                     </ul>
 				</div>
 			</div>
@@ -185,19 +181,35 @@
                                 <label class="sr-only" for="domainnamehere">Domain name</label>
                                 <input type="text" class="form-control" id="domainnamehere" placeholder="Enter domain name here..">
 								<p>choose subject for learning:</p>&nbsp&nbsp&nbsp&nbsp
-
-									{% for subject in data["subjects"]%}
-								  <input type="radio" id="{{subject.get('id')}}" name="subject" value="{{subject.get('id')}}"/><br>
-								  <label for="{{subject.get('id')}}">{{subject.get('description')}}</label><br>&nbsp&nbsp&nbsp
-									{%endfor%}
-									<label for="gender">gender:</label>
-
-									<select name="gender" id="gender">
-									  <option value="male">male</option>
-									  <option value="female">female</option>
-
-									</select>
-                                <button type="submit" class="btn btn-primary grd1"><i class="fa fa-search"></i></button>
+                                <div class="form-group">
+                                    {% for subject in data["subjects"]%}
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="{{subject.get('id')}}"  name="subject" value="{{subject.get('id')}}">
+                                        <label class="form-check-label" for="{{subject.get('id')}}">{{subject.get('description')}}</label>
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                                    <div class="row g-3">
+                                        <div class="col-sm-10">
+                                            <select id="inputState" class="form-control" name="gender">
+                                            <option selected>gender</option>
+                                            <option>male</option>
+                                            <option>female</option>
+                                            </select>
+                                            <!-- <input class="form-control" id="password" placeholder="Password" type="password" name="password"> -->
+                                        </div>
+                                        <!-- <div class="">
+                                            <button type="submit" class="btn btn-primary grd1"><i class="fa fa-search"></i></button>
+                                        </div> -->  
+                                        <div class="form-horizontal">
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <!-- <button class="btn btn-primary me-md-2" type="button">Button</button>
+                                            <button class="btn btn-primary" type="button">Button</button> -->
+                                            <button type="submit" class="btn btn-primary btn-lg grd1"><i class="fa fa-search"></i></button>
+                                          </div>
+                                        </div>
+                                    </div>
+                                
                             </div>
 
                             <hr>
@@ -392,7 +404,7 @@
                             <h3>Information Link</h3>
                         </div>
                         <ul class="footer-links">
-                            <li><a href="#">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li><a href="#">Blog</a></li>
                             <li><a href="#">Pricing</a></li>
 							<li><a href="#">About</a></li>
