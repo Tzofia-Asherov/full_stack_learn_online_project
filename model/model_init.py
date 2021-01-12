@@ -1,5 +1,5 @@
 import pymysql
-from config import DB_PASSWORD, DB_USER
+from config import DB_PASSWORD, DB_USER,DB_NAME
 
 
 def connect_to_DB():
@@ -7,7 +7,7 @@ def connect_to_DB():
         host="localhost",
         user=DB_USER,
         password=DB_PASSWORD,
-        db="pokemon",
+        db=DB_NAME,
         charset="utf8",
         cursorclass=pymysql.cursors.DictCursor
     )
