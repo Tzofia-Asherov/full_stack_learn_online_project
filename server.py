@@ -5,12 +5,12 @@ import utils
 import json
 
 app = Flask(__name__, static_url_path='', static_folder='static', template_folder='template')
-
+# 
 
 @app.route('/')
 def root():
     subject_lst = subject_model.get_all()
-    return render_template('index.html', data={"name": "hellooooooooooooo", "subjects": subject_lst, "teachers": []})    
+    return render_template('index.html', data={"subjects": subject_lst, "teachers": []})    
 
 
 @app.route('/teachers', methods=["POST"])
@@ -34,7 +34,9 @@ def add_teacher():
     teacher_id =  teacher_model.get_max_id() 
     teacher_model.add_subjects(teacher_id, subjects_id_list)
 
-    return render_template("success_page.html")
+    subject_lst = subject_model.get_all()
+
+    return render_template("success_page.html",  data={"subjects": subject_lst, "teachers": []})
 
         
 
@@ -42,9 +44,12 @@ def add_teacher():
 def get_teachers():
     subject_id = request.args.get("subject")
     gender = request.args.get("gender")
-    teacher_lst = teacher_model.get_by_subject(subject_id,gender)
     subject_lst = subject_model.get_all()
-    return render_template('pricing.html', data={"teachers": teacher_lst, "subjects": subject_lst })
+    teacher_lst = teacher_model.get_all()
+    if subject_id is None and gender is None:
+        return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
+    teacher_lst = teacher_model.get_by_subject(subject_id, gender)  
+    return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
 
 
 if __name__ == "__main__":

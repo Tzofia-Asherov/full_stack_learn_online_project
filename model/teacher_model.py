@@ -47,4 +47,11 @@ def add_subjects(teacher_id, subjects_id_list):
             cursor.execute(query)
         connection.commit()
 
+def get_all():
+    with connection.cursor() as cursor:
+        query = "SELECT * FROM Teachers"
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result
+
 
