@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from model import teacher_model, subject_model
+import utils
 
 import json
 
@@ -15,18 +16,24 @@ def root():
 @app.route('/teachers', methods=["POST"])
 def add_teacher():
     teacher_details = request.form
-    first_name = teacher_details["first_name"]
-    last_name  = teacher_details["last_name"]
-    e_mail =  teacher_details["e_mail"]
-    phone = teacher_details["phone"]
-    gender = teacher_details["gender"]
+    first_name = teacher_details.get("first_name")
+    last_name  = teacher_details.get("last_name")
+    e_mail =  teacher_details.get("e_mail")
+    phone = teacher_details.get("phone")
+    gender = teacher_details.get("gender")
     aviable_after_lesson = teacher_details.get("aviable_after_lesson")
-    aviable_flag = False
-    if aviable_after_lesson == 'on':
-        aviable_flag = True
-    #if first_name == None or e_mail == None:
-    #     return render_template("register_teacher.html")
-    teacher_model.add(first_name, last_name, e_mail, phone, gender, aviable_flag) 
+    subjects_id_list =  teacher_details.getlist("teacher_subjects")
+   
+    if first_name == '""' or e_mail == '':
+        render_template("error.py")
+
+    last_name , phone, aviable_flag = utils.validate_teacher(last_name , phone, aviable_after_lesson)
+  
+
+    teacher_model.add(first_name, last_name, e_mail, phone, gender, aviable_flag)
+    teacher_id =  teacher_model.get_max_id() 
+    teacher_model.add_subjects(teacher_id, subjects_id_list)
+
     return render_template("success_page.html")
 
         
