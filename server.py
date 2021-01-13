@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from model import teacher_model, subject_model
+from model import teacher_model, subject_model, comments_model
 import utils
 
 import json
@@ -10,7 +10,8 @@ app = Flask(__name__, static_url_path='', static_folder='static', template_folde
 @app.route('/')
 def root():
     subject_lst = subject_model.get_all()
-    return render_template('index.html', data={"subjects": subject_lst, "teachers": []})    
+    comment_lst = comments_model.get_all()
+    return render_template('index.html', data={"subjects": subject_lst, "teachers": [], "comments": comment_lst})
 
 
 @app.route('/teachers', methods=["POST"])
