@@ -190,13 +190,18 @@
 								  <input type="radio" id="{{subject.get('id')}}" name="subject" value="{{subject.get('id')}}"/><br>
 								  <label for="{{subject.get('id')}}">{{subject.get('description')}}</label><br>&nbsp&nbsp&nbsp
 									{%endfor%}
-									<label for="gender">gender:</label>
 
-									<select name="gender" id="gender">
-									  <option value="male">male</option>
-									  <option value="female">female</option>
 
-									</select>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                              <label for="gender" class="form-label">gender</label>
+                                              <select id="gender" class="form-select" name="gender">
+                                                <option selected>gender</option>
+                                                <option >male</option>
+                                                <option>female</option>
+                                              </select>
+                                            </div>
+                            </div>
                                 <button type="submit" class="btn btn-primary grd1"><i class="fa fa-search"></i></button>
                             </div>
 
