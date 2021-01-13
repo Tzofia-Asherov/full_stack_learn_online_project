@@ -9,41 +9,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>Register as Teacher</title>  
+    <title>Tutor</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="\images\favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="\images\apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="\css\bootstrap.min.css">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="\style.css">
     <!-- ALL VERSION CSS -->
-    <link rel="stylesheet" href="css/versions.css">
+    <link rel="stylesheet" href="\css\versions.css">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="\css\responsive.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="\css\custom.css">
 
     <!-- Modernizer for Portfolio -->
-    <script src="js/modernizer.js"></script>
+    <script src="\js\modernizer.js"></script>
 
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
 </head>
+<style>
+    .pad-form{
+        padding: 35px;
+    }
 
-<style> 
-.my-padding{
-    padding-left: 50px;
-}
-
+    .color-form
+    {
+        background-color: white;
+    }
 </style>
 <body class="host_version"> 
-
-	
+       <!--  Email Modal----------------------------------------------------- -->
+<div class="modal fade" id="send_email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+          <div class="modal-header tit-up">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Contact Teacher</h4>
+          </div>
+          <div class="modal-body customer-box">
+              <!-- Nav tabs -->
+              <!-- Tab panes -->
+              <div class="tab-content">
+                  <div class="tab-pane active" id="send_email"  >
+                      <form role="form" class="form-horizontal" method="post" action="/emails">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input class="form-control" name="teacher" id="teacher" type="text" style="display: none;" value="{{data['teacher']['id']}}">
+                            </div>
+                        </div>
+                          <div class="form-group">
+                              <div class="col-sm-12">
+                                  <input class="form-control" name="name" id="name" placeholder="your name" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-sm-12">
+                                  <input class="form-control" name="e_mail" id="mail" placeholder="your email" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-sm-12">
+                                  <input class="form-control"  name="phone" id="phone" placeholder="your phone" type="text">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <textarea class="form-control" name="content" id="content" rows="6" placeholder="Give us more details.."></textarea>
+                            </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-sm-10">
+                                  <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
+                                      Send
+                                  </button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
 	<!-- Modal -->
 	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -131,13 +185,15 @@
                                       </label>
                               </div>
                               {% endfor %}
+  
                               <div class="row">							
                                   <div class="col-sm-10">
                                       <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
                                           Save &amp; Continue
                                       </button>
                                       <button type="submit" class="btn btn-light btn-radius btn-brd grd1">
-                                          Cancel</button>
+                                          Cancel
+                                      </button>
                                   </div>
                               </div>
                           </form>
@@ -148,22 +204,13 @@
         </div>
       </div>
 
-    <!-- LOADER -->
-	<div id="preloader">
-		<div class="loader-container">
-			<div class="progress-br float shadow">
-				<div class="progress__item"></div>
-			</div>
-		</div>
-	</div>
-	<!-- END LOADER -->	
 
-   	<!-- Start header -->
+    <!-- Start header -->
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/">
-					<img src="images/logo-hosting.png" alt="" />
+				<a class="navbar-brand" href="index.html">
+					<img src="\images\logo-hosting.png" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -198,228 +245,115 @@
 	</header>
 	<!-- End header -->
 	
-	<div class="all-title-box">
-		<div class="container text-center">
-			<h1>Teachers<span class="m_1">search results</span></h1>
-		</div>
-	</div>
+<!--start code here-->
+
+<div class="all-title-box">
+    <div class="container text-center">
+        <h1>Teacher<span class="m_1">display teacher's details</span></h1>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12">
+        <div class="contact_form color-form">
+            <div id="message"></div>
+            <form id="contactform" class="" action="contact.php" name="contactform" method="post">
+                <fieldset class>
+                <!-- <fieldset class></fieldset>="row row-fluid"> -->
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" readonly name="first_name" id="first_name" class="form-control" placeholder="First Name" value="{{data['teacher']['first_name']}}">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" readonly name="last_name" id="last_name" class="form-control" placeholder="Last Name" value="{{data['teacher']['last_name']}}">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <input type="email" readonly name="email" id="email" class="form-control" value="{{data['teacher']['e_mail']}}">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" readonly name="phone" id="phone" class="form-control" value="{{data['teacher']['phone']}}">
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" readonly name="gender" id="gender" class="form-control" value="{{data['teacher']['gender']}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <input class="form-check-input" type="checkbox" disabled id="gridCheck" name="aviable_after_lesson"  {% if data["teacher"]["aviable_after_lesson"] == True %}checked{% else %}{% endif %}>
+           
+                        <label class="form-check-label" for="gridCheck">
+                        Available after the lessons
+                        </label>
+                        
+                    </div>
+                    <div class="col-sm-12">
+                    <label class="col-form-label" for="flexCheckDefault">
+                        I teach:
+                        </label>
+                    <ul>
+                        {% for subject in data["subjects"] %}
+                            
+                              <li>{{subject['description']}}</li>
+                
+                    {% endfor %}
+                </ul> 
+                </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <textarea class="form-control" name="comments" id="comments" rows="6" placeholder="description"></textarea>
+                    </div>
+                </fieldset>
+              
+            </form>
+            <form action="/emails" method="POST"><!--change to route-->
+                <div class="text-left pd">
+                    <a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#send_email"><span>send email to teacher</span></a>
+                        <button  style="border:None" type="submit"><span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-mail"></i></span></button>                    
+                </div>
+            </form>
+
+     
+        <form action="/like" method="POST"><!--change to route-->
+        <div class="text-center pd">           
+            <button  style="border:None" type="submit"><span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="bi bi-hand-thumbs-up-fill"></i></span></button>
+            
+        </div>
+    </form>
+
+
+<!--end code here-->
+    
+      
+      
+      
+        <!-- End of Success page start of hosting-->
 	
 
-	<div id="domain" class="section wb">
-        <div class="container">
-            <div class="row text-center">
+            
 
-                <div class="col-lg-12">
-                    <form class="checkdomain form-inline" method ="get" action="/teachers">
-                        <div class="checkdomain-wrapper">
-                            <div class="form-group">
-                                <label class="sr-only" for="domainnamehere">Domain name</label>
-                                <input type="text" class="form-control" name="search" id="domainnamehere" placeholder="Enter subject name here..">
-								<!-- <p>choose subject for learning:</p>&nbsp&nbsp&nbsp&nbsp -->
+                    
 
-
-									<!-- {% for subject in data["subjects"]%}
-								  <input type="radio" id="{{subject.get('id')}}" name="subject" value="{{subject.get('id')}}"/><br>
-								  <label for="{{subject.get('id')}}">{{subject.get('description')}}</label><br>&nbsp&nbsp&nbsp
-									{%endfor%} -->
-
-                            <br><br><br>
-                            <div class="form">
-                                <div class="col-md-2">
-                                    <select id="inputState" type="checkbox"   class="form-control" name="gender">
-                                        <option selected>filter by gender</option>
-                                        <option >all</option>
-                                        <option >male</option>
-                                        <option>female</option>
-                                        </select>
-                                 </div>
-                            </div>
-                            {% for i in range(4)%}
-                                &nbsp
-                            {%endfor%}                            
-                            <label class="switch my-padding">
-                                    <input type="checkbox" name="likes" >
-                                    <span class="slider round"></span>
-                              </label>
-                              &nbsp&nbsp&nbsp
-                              <label for="likes"><b> sort by likes</b></label>
-                              {% for i in range(42)%}
-                                &nbsp
-                              {%endfor%}
-                                <button type="submit" class="btn btn-primary grd1"><i class="fa fa-search"></i></button>
-
-                            </div>
-
-                            <hr>
-                            <div class="clearfix"></div>
-                        </div><!-- end checkdomain-wrapper -->
-                    </form>
-                </div>
-
-
-                <!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
-
-
-    <div class="section lb">
-        <div class="container">
-            <div class="section-title text-center">
-                <h3>Ready to get started?</h3>
-				<div class="dmoain-pricing">
-					<div class="table-responsive-sm">
-						<table>
-							<thead>
-								<tr class="domain-head">
-									<th scope="col">
-										Last name
-									</th>
-									<th scope="col">
-										First name
-									</th>
-                                    <th scope="col">
-                                        Gender
-                                    </th>
-                                    <th scope="col">
-                                        aviable after lesson
-                                    </th>
-                                    <th scope="col">
-                                        likes
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-                            	{% for teacher in data["teachers"]%}
-                                <tr>
-									<td data-label="DOMAIN NAME"><a href="/teachers/{{teacher.get('id')}}">{{teacher.get("last_name")}}</a></td>
-									<td data-label="renewal pricing">{{teacher.get("first_name")}}</td>
-                                    <td data-label="transfer-price">{{teacher.get("gender")}}</td>
-                                    <td data-label="transfer-price">{{teacher.get("aviable_after_lesson")}}</td>
-                                    <td data-label="transfer-price">{{teacher.get("likes")}}</td>
-                                </tr>
-                                {%endfor%}
-
-
-							</tbody>
-						</table>
-					</div>
-				</div>
-            </div><!-- end title -->
-        </div><!-- end container -->
-    </div><!-- end section -->
-
-    <div id="testimonials" class="parallax section db parallax-off" style="background-image:url('images/parallax_04.jpg');">
-        <div class="container">
-            <div class="section-title text-center">
-                <h3>Testimonials</h3>
-                <p>Lorem ipsum dolor sit aet, consectetur adipisicing lit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div><!-- end title -->
-
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="testi-carousel owl-carousel owl-theme">
-                        <div class="testimonial clearfix">
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
-                                <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
-                            </div>
-                            <div class="testi-meta">
-                                <img src="images/testi_01.png" alt="" class="img-fluid">
-                                <h4>James Fernando </h4>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
-
-                        <div class="testimonial clearfix">
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
-                                <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>
-                            </div>
-                            <div class="testi-meta">
-                                <img src="images/testi_02.png" alt="" class="img-fluid">
-                                <h4>Jacques Philips </h4>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
-
-                        <div class="testimonial clearfix">
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
-                                <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
-                            </div>
-                            <div class="testi-meta">
-                                <img src="images/testi_03.png" alt="" class="img-fluid ">
-                                <h4>Venanda Mercy </h4>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
-                        <div class="testimonial clearfix">
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
-                                <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
-                            </div>
-                            <div class="testi-meta">
-                                <img src="images/testi_01.png" alt="" class="img-fluid">
-                                <h4>James Fernando </h4>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
-
-                        <div class="testimonial clearfix">
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
-                                <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>
-                            </div>
-                            <div class="testi-meta">
-                                <img src="images/testi_02.png" alt="" class="img-fluid">
-                                <h4>Jacques Philips </h4>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
-
-                        <div class="testimonial clearfix">
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
-                                <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
-                            </div>
-                            <div class="testi-meta">
-                                <img src="images/testi_03.png" alt="" class="img-fluid">
-                                <h4>Venanda Mercy </h4>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div><!-- end testimonial -->
-                    </div><!-- end carousel -->
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
 
     <div class="parallax section dbcolor">
         <div class="container">
             <div class="row logos">
                 <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_01.png" alt="" class="img-repsonsive"></a>
+                    <a href="#"><img src="\images\logo_01.png" alt="" class="img-repsonsive"></a>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_02.png" alt="" class="img-repsonsive"></a>
+                    <a href="#"><img src="\images\logo_02.png" alt="" class="img-repsonsive"></a>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_03.png" alt="" class="img-repsonsive"></a>
+                    <a href="#"><img src="\images\logo_03.png" alt="" class="img-repsonsive"></a>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_04.png" alt="" class="img-repsonsive"></a>
+                    <a href="#"><img src="\images\logo_04.png" alt="" class="img-repsonsive"></a>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_05.png" alt="" class="img-repsonsive"></a>
+                    <a href="#"><img src="\images\logo_05.png" alt="" class="img-repsonsive"></a>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="images/logo_06.png" alt="" class="img-repsonsive"></a>
+                    <a href="#"><img src="\images\logo_06.png" alt="" class="img-repsonsive"></a>
                 </div>
             </div><!-- end row -->
         </div><!-- end container -->
@@ -444,7 +378,7 @@
                             <h3>Information Link</h3>
                         </div>
                         <ul class="footer-links">
-                            <li><a href="/">Home</a></li>
+                            <li><a href="#">Home</a></li>
                             <li><a href="#">Blog</a></li>
                             <li><a href="#">Pricing</a></li>
 							<li><a href="#">About</a></li>
@@ -496,9 +430,9 @@
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
     <!-- ALL JS FILES -->
-    <script src="js/all.js"></script>
+    <script src="\js\all.js"></script>
     <!-- ALL PLUGINS -->
-    <script src="js/custom.js"></script>
+    <script src="\js\custom.js"></script>
 
 </body>
 </html>
