@@ -46,12 +46,11 @@ select * from SubjectsForTechers
 USE learnOnlineDB;
 
 SELECT * from Teachers
+where aviable_after_lesson = false
 
 
 USE learnOnlineDB;
 select * from Subjects
-
-
 USE learnOnlineDB;
 CREATE TABLE Comments
 (
