@@ -207,14 +207,14 @@
                         <div class="checkdomain-wrapper">
                             <div class="form-group">
                                 <label class="sr-only" for="domainnamehere">Domain name</label>
-                                <input type="text" class="form-control" id="domainnamehere" placeholder="Enter domain name here..">
-								<p>choose subject for learning:</p>&nbsp&nbsp&nbsp&nbsp
+                                <input type="text" class="form-control" name="search" id="domainnamehere" placeholder="Enter subject name here..">
+								<!-- <p>choose subject for learning:</p>&nbsp&nbsp&nbsp&nbsp -->
 
 
-									{% for subject in data["subjects"]%}
+									<!-- {% for subject in data["subjects"]%}
 								  <input type="radio" id="{{subject.get('id')}}" name="subject" value="{{subject.get('id')}}"/><br>
 								  <label for="{{subject.get('id')}}">{{subject.get('description')}}</label><br>&nbsp&nbsp&nbsp
-									{%endfor%}
+									{%endfor%} -->
 
 
                             <div class="form-group">
@@ -266,6 +266,15 @@
 									</th>
 									<th scope="col">
                                         Phone
+                                    </th>
+                                    <th scope="col">
+                                        Gender
+                                    </th>
+                                    <th scope="col">
+                                        aviable after lesson
+                                    </th>
+                                    <th scope="col">
+                                        likes
 									</th>
 								</tr>
 							</thead>
@@ -275,7 +284,10 @@
 									<td data-label="DOMAIN NAME">{{teacher.get("last_name")}}</td>
 									<td data-label="renewal pricing">{{teacher.get("first_name")}}</td>
 									<td data-label="renewal pricing">{{teacher.get("e_mail")}}</td>
-									<td data-label="transfer-price">{{teacher.get("phone")}}</td>
+                                    <td data-label="transfer-price">{{teacher.get("phone")}}</td>
+                                    <td data-label="transfer-price">{{teacher.get("gender")}}</td>
+                                    <td data-label="transfer-price">{{teacher.get("aviable_after_lesson")}}</td>
+                                    <td data-label="transfer-price">{{teacher.get("likes")}}</td>
                                 </tr>
                                 {%endfor%}
 

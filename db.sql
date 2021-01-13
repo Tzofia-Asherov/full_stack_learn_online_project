@@ -46,7 +46,25 @@ select * from SubjectsForTechers
 USE learnOnlineDB;
 
 SELECT * from Teachers
+where aviable_after_lesson = false
 
 
 USE learnOnlineDB;
 select * from Subjects
+USE learnOnlineDB;
+CREATE TABLE Comments
+(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    teacher_id INT NOT NULL,
+	
+    title VARCHAR(40),
+    descriptions  VARCHAR(200),
+    student_name VARCHAR(40),
+    img VARCHAR(100),
+    FOREIGN KEY(teacher_id) REFERENCES Teachers(id)
+);
+
+USE learnOnlineDB; insert into Comments values(default,32,"Awesome Teachers!","Explain to you how all this mistaken idea of math" ,"Jacques Philips","images/testi_02.png")
+USE learnOnlineDB;  insert into Comments values(default,32,"Great & Talented Teachers!","The great teacher I found here helped me a lot" ,"Venanda Mercy","images/testi_03.png")
+USE learnOnlineDB;insert into Comments values(default,33,"Wondefull!","I've enjoy so much' and for free!!" ,"Yosef Cohen","images/testi_01.png")
+

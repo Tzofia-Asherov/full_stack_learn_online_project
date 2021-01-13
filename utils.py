@@ -8,3 +8,6 @@ def validate_teacher(phone, aviable_after_lesson):
         aviable_flag = True
 
     return phone, aviable_flag
+
+
+                

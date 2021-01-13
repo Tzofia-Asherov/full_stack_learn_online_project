@@ -37,3 +37,29 @@ USE learnOnlineDB;
 
 insert into  Teachers(first_name,last_name, e_mail,phone,gender, likes, aviable_after_lesson) 
                 values ('aaa','yyy', 'yy@gmail.com','0504144488','male', 0 , 1)
+
+USE learnOnlineDB;
+
+select Subjects.description, Subjects.category , subject_id
+from SubjectsForTechers join Subjects on SubjectsForTechers.subject_id = Subjects.id
+where SubjectsForTechers.teacher_id = 55
+
+USE learnOnlineDB;
+select * from teachers;
+
+USE learnOnlineDB;
+
+select * from SubjectsForTechers
+
+where SubjectsForTechers.teacher_id =44
+USE learnOnlineDB;
+
+USE learnOnlineDB;
+
+select * from Subjects
+
+USE learnOnlineDB;
+
+select Subjects.description, Subjects.category , subject_id
+                    from SubjectsForTechers join Subjects on SubjectsForTechers.subject_id = Subjects.id
+                    where SubjectsForTechers.teacher_id=49
