@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- ALL VERSION CSS -->
     <link rel="stylesheet" href="css/versions.css">
-    <!-- Responsive CSS -->
+    <!-- Responsive CSS -->c
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
@@ -33,6 +33,11 @@
     <script src="js/modernizer.js"></script>
 
 
+    <!-- custom drop-down-list -->
+    <script src="js/custom-drop-down.js"></script>
+    <!-- <link rel="stylesheet" href="css/custom-drop-down.css"> -->
+
+    
 </head>
 <body class="host_version"> 
 
@@ -113,8 +118,7 @@
                                     </label>
 								</div>
                             </div>
-                            
-
+                          
                             {% for subject in data["subjects"] %}
                             <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value={{subject["id"]}} id="flexCheckDefault" name="teacher_subjects">
@@ -273,7 +277,7 @@
 		</div>
 	</div>
 	
-	
+  
 	<div id="domain" class="section wb">
         <div class="container">
             <div class="row text-center">
@@ -283,8 +287,9 @@
                         <div class="checkdomain-wrapper">
                             <div class="form-group">
                                 <label class="sr-only" for="domainnamehere">Domain name</label>
-                                <input type="text" class="form-control" id="domainnamehere" placeholder="Enter domain name here..">
-								<p>choose subject for learning:</p>&nbsp&nbsp&nbsp&nbsp
+                                <input type="text" class="form-control" name="search" id="domainnamehere" placeholder="Enter domain name here..">
+                                    
+                                <p>choose subject for learning:</p>&nbsp&nbsp&nbsp&nbsp
 
 									{% for subject in data["subjects"]%}
 								  <input type="radio" id="{{subject.get('id')}}" name="subject" value="{{subject.get('id')}}"/><br>
@@ -832,6 +837,10 @@
 			verticalStartPosition: 'left',
 			visibleItems: 4
 		});
-	</script>
+    </script>
+    
+   
+
 </body>
 </html>
+
