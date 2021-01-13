@@ -95,5 +95,10 @@ def send_email():
     email_model.send_to_teacher(teacher_id, name, e_mail, phone, content)
     return render_template("success_page.html", data={"subjects": [], "teachers": []})
 
+
+@app.route('/like'):
+    #get id, update like and return it
+    return str(2)
+
 if __name__ == "__main__":
     app.run(port=3010, debug=True)

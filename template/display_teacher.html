@@ -32,7 +32,8 @@
     <!-- Modernizer for Portfolio -->
     <script src="\js\modernizer.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
     .pad-form{
@@ -307,16 +308,15 @@
             </form>
             <form action="/emails" method="POST"><!--change to route-->
                 <div class="text-left pd">
-                    <a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#send_email"><span>send email to teacher</span></a>
-                        <button  style="border:None" type="submit"><span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-mail"></i></span></button>                    
+                    <a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#send_email"> <button  style="border:None" type="submit"><span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-mail"></i></span></button> </a>                   
                 </div>
             </form>
 
      
         <form action="/like" method="POST"><!--change to route-->
-        <div class="text-center pd">           
-            <button  style="border:None" type="submit"><span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="bi bi-hand-thumbs-up-fill"></i></span></button>
-            
+        <div class="text-left pd">           
+             <button  style="border:None" type="submit"><span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i onclick="like(this)" class="fa fa-thumbs-up"></i></span></button>
+
         </div>
     </form>
 
