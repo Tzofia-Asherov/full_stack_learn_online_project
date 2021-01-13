@@ -63,8 +63,3 @@ CREATE TABLE Comments
     img VARCHAR(100),
     FOREIGN KEY(teacher_id) REFERENCES Teachers(id)
 );
-
-USE learnOnlineDB; insert into Comments values(default,32,"Awesome Teachers!","Explain to you how all this mistaken idea of math" ,"Jacques Philips","images/testi_02.png")
-USE learnOnlineDB;  insert into Comments values(default,32,"Great & Talented Teachers!","The great teacher I found here helped me a lot" ,"Venanda Mercy","images/testi_03.png")
-USE learnOnlineDB;insert into Comments values(default,33,"Wondefull!","I've enjoy so much' and for free!!" ,"Yosef Cohen","images/testi_01.png")
-
