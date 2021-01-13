@@ -41,5 +41,12 @@ CREATE TABLE SubjectsForTechers
 
 -- USE learnOnlineDB;
 -- drop table Teachers
+USE learnOnlineDB;
+select * from SubjectsForTechers
+USE learnOnlineDB;
+
+SELECT * from Teachers
 
 
+USE learnOnlineDB;
+select * from Subjects

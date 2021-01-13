@@ -1,33 +1,43 @@
 from flask import Flask, render_template, request
-from model import teacher_model, subject_model
+from model import teacher_model, subject_model, comments_model
+import utils
 
 import json
 
 app = Flask(__name__, static_url_path='', static_folder='static', template_folder='template')
-
+# 
 
 @app.route('/')
 def root():
     subject_lst = subject_model.get_all()
-    return render_template('index.html', data={"name": "hellooooooooooooo", "subjects": subject_lst, "teachers": []})    
+    comment_lst = comments_model.get_all()
+    return render_template('index.html', data={"subjects": subject_lst, "teachers": [], "comments": comment_lst})
 
 
 @app.route('/teachers', methods=["POST"])
 def add_teacher():
     teacher_details = request.form
-    first_name = teacher_details["first_name"]
-    last_name  = teacher_details["last_name"]
-    e_mail =  teacher_details["e_mail"]
-    phone = teacher_details["phone"]
-    gender = teacher_details["gender"]
+    first_name = teacher_details.get("first_name")
+    last_name  = teacher_details.get("last_name")
+    e_mail =  teacher_details.get("e_mail")
+    phone = teacher_details.get("phone")
+    gender = teacher_details.get("gender")
     aviable_after_lesson = teacher_details.get("aviable_after_lesson")
-    aviable_flag = False
-    if aviable_after_lesson == 'on':
-        aviable_flag = True
-    #if first_name == None or e_mail == None:
-    #     return render_template("register_teacher.html")
-    teacher_model.add(first_name, last_name, e_mail, phone, gender, aviable_flag) 
-    return render_template("success_page.html")
+    subjects_id_list =  teacher_details.getlist("teacher_subjects")
+   
+    if first_name == '' or last_name == '' or e_mail == '':
+        return render_template("error_input_teacher.html", data = {"message":"you must have firstname, last name and e-mail"})
+
+    phone, aviable_flag = utils.validate_teacher(phone, aviable_after_lesson)
+  
+
+    teacher_model.add(first_name, last_name, e_mail, phone, gender, aviable_flag)
+    teacher_id =  teacher_model.get_max_id() 
+    teacher_model.add_subjects(teacher_id, subjects_id_list)
+
+    subject_lst = subject_model.get_all()
+
+    return render_template("success_page.html",  data={"subjects": subject_lst, "teachers": []})
 
         
 
@@ -35,9 +45,12 @@ def add_teacher():
 def get_teachers():
     subject_id = request.args.get("subject")
     gender = request.args.get("gender")
-    teacher_lst = teacher_model.get_by_subject(subject_id,gender)
     subject_lst = subject_model.get_all()
-    return render_template('pricing.html', data={"teachers": teacher_lst, "subjects": subject_lst })
+    teacher_lst = teacher_model.get_all()
+    if subject_id is None and gender is None:
+        return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
+    teacher_lst = teacher_model.get_by_subject(subject_id, gender)  
+    return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
 
 
 if __name__ == "__main__":
