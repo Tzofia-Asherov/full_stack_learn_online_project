@@ -210,18 +210,11 @@
                                 <input type="text" class="form-control" name="search" id="domainnamehere" placeholder="Enter subject name here..">
 								<!-- <p>choose subject for learning:</p>&nbsp&nbsp&nbsp&nbsp -->
 
-
-									<!-- {% for subject in data["subjects"]%}
-								  <input type="radio" id="{{subject.get('id')}}" name="subject" value="{{subject.get('id')}}"/><br>
-								  <label for="{{subject.get('id')}}">{{subject.get('description')}}</label><br>&nbsp&nbsp&nbsp
-									{%endfor%} -->
-
-
                             <div class="form-group">
                                 <div class="col-md-2">
                                               <label for="gender" class="form-label">gender</label>
                                               <select id="gender" class="form-select" name="gender">
-                                                <option selected>gender</option>
+                                                <option selected>all</option>
                                                 <option >male</option>
                                                 <option>female</option>
                                               </select>
@@ -262,9 +255,6 @@
 										First name
 									</th>
 									<th scope="col">
-										Email
-									</th>
-									<th scope="col">
                                         Phone
                                     </th>
                                     <th scope="col">
@@ -283,7 +273,6 @@
                                 <tr>
 									<td data-label="DOMAIN NAME">{{teacher.get("last_name")}}</td>
 									<td data-label="renewal pricing">{{teacher.get("first_name")}}</td>
-									<td data-label="renewal pricing">{{teacher.get("e_mail")}}</td>
                                     <td data-label="transfer-price">{{teacher.get("phone")}}</td>
                                     <td data-label="transfer-price">{{teacher.get("gender")}}</td>
                                     <td data-label="transfer-price">{{teacher.get("aviable_after_lesson")}}</td>
