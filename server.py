@@ -24,10 +24,10 @@ def add_teacher():
     aviable_after_lesson = teacher_details.get("aviable_after_lesson")
     subjects_id_list =  teacher_details.getlist("teacher_subjects")
    
-    if first_name == '""' or e_mail == '':
-        render_template("error.py")
+    if first_name == '' or last_name == '' or e_mail == '':
+        return render_template("error_input_teacher.html", data = {"message":"you must have firstname, last name and e-mail"})
 
-    last_name , phone, aviable_flag = utils.validate_teacher(last_name , phone, aviable_after_lesson)
+    phone, aviable_flag = utils.validate_teacher(phone, aviable_after_lesson)
   
 
     teacher_model.add(first_name, last_name, e_mail, phone, gender, aviable_flag)

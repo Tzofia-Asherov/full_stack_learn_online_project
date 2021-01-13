@@ -1,7 +1,5 @@
-def validate_teacher(last_name , phone, aviable_after_lesson):
-    if last_name == '':
-        last_name = 'null'
-    
+def validate_teacher(phone, aviable_after_lesson):
+
     if phone =='':
         phone ='null'
 
@@ -9,4 +7,4 @@ def validate_teacher(last_name , phone, aviable_after_lesson):
     if aviable_after_lesson == 'on':
         aviable_flag = True
 
-    return last_name, phone, aviable_flag
+    return phone, aviable_flag
