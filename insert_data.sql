@@ -37,3 +37,17 @@ USE learnOnlineDB;
 
 insert into  Teachers(first_name,last_name, e_mail,phone,gender, likes, aviable_after_lesson) 
                 values ('aaa','yyy', 'yy@gmail.com','0504144488','male', 0 , 1)
+
+
+USE learnOnlineDB;insert into Comments values(default,1,"Awesome Teachers!","Explain to you how all this mistaken idea of math" ,"Jacques Philips","images/testi_02.png")
+USE learnOnlineDB;insert into Comments values(default,1,"Great & Talented Teachers!","The great teacher I found here helped me a lot" ,"Venanda Mercy","images/testi_03.png")
+USE learnOnlineDB;insert into Comments values(default,2,"Wondefull!","I've enjoy so much' and for free!!" ,"Yosef Cohen","images/testi_01.png")
+
+
+use learnOnlineDB;
+select id, description, category 
+from SubjectsForTechers join Subjects on Subjects.id = SubjectsForTechers.subject_id
+where  SubjectsForTechers.teacher_id=7;
+
+use learnOnlineDB;
+select * from SubjectsForTechers;

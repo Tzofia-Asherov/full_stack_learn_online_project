@@ -54,4 +54,19 @@ def get_all():
         result = cursor.fetchall()
         return result
 
+def get_subjects(teacher_id):
+     with connection.cursor() as cursor:
+        query = """select id, description, category 
+                    from SubjectsForTechers join Subjects on Subjects.id = SubjectsForTechers.subject_id
+                    where  SubjectsForTechers.teacher_id={}""".format(teacher_id)
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result
 
+
+def get_one(teacher_id):
+    with connection.cursor() as cursor:
+        query = "SELECT * FROM Teachers WHERE id= {}".format(teacher_id)
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result

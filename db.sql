@@ -50,3 +50,17 @@ SELECT * from Teachers
 
 USE learnOnlineDB;
 select * from Subjects
+
+
+USE learnOnlineDB;
+CREATE TABLE Comments
+(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    teacher_id INT NOT NULL,
+	
+    title VARCHAR(40),
+    descriptions  VARCHAR(200),
+    student_name VARCHAR(40),
+    img VARCHAR(100),
+    FOREIGN KEY(teacher_id) REFERENCES Teachers(id)
+);

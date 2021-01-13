@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from model import teacher_model, subject_model, comments_model
+from model import teacher_model, subject_model, comments_model, email_model
 import utils
 
 import json
@@ -52,6 +52,24 @@ def get_teachers():
     teacher_lst = teacher_model.get_by_subject(subject_id, gender)  
     return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
 
+@app.route('/teachers/<id_teacher>')
+def display_teacher(id_teacher):
+    subject_lst = teacher_model.get_subjects(id_teacher)
+    teacher = teacher_model.get_one(id_teacher)[0]
+    data={"teacher": teacher, "subjects": subject_lst }
+    data['teacher']['aviable_after_lesson']  = False if data['teacher']['aviable_after_lesson'] == b'\x00' else True
+
+    return render_template('display_teacher.html', data={"teacher": teacher, "subjects": subject_lst })
+
+@app.route('/emails', methods=["POST"])
+def send_email():
+    teacher_id = request.form.get("teacher")
+    name = request.form.get("name")
+    e_mail = request.form.get("e_mail")
+    phone = request.form.get("phone")
+    content = request.form.get("content")
+    email_model.send_to_teacher(teacher_id, name, e_mail, phone, content)
+    return render_template("success_page.html", data={"subjects": [], "teachers": []})
 
 if __name__ == "__main__":
     app.run(port=3010, debug=True)
