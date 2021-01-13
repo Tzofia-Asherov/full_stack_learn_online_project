@@ -5,9 +5,6 @@ connection = connect_to_DB()
 
 def add(first_name, last_name, e_mail, phone, gender,aviable_after_lesson):
     with connection.cursor() as cursor:
-
-        #query =  """insert into  Teachers(first_name, last_name, e_mail, phone, gender, likes, aviable_after_lesson) 
-        #        values ('{}', '{}', '{}', '{}' '{}', 0, {} )""".format(first_name, last_name, e_mail, phone, gender,aviable_after_lesson)
         query = """insert into  Teachers(first_name,last_name, e_mail,phone,gender, likes, aviable_after_lesson) 
                 values ('{}', '{}', '{}', '{}', '{}', {}, {})""".format(first_name, last_name,  e_mail,phone,gender, '0' , aviable_after_lesson)
         cursor.execute(query)
@@ -33,3 +30,22 @@ def get_by_gender(gender):
         cursor.execute(query)
         result = cursor.fetchall()
         return result
+
+
+def get_max_id():
+    with connection.cursor() as cursor:
+        query = "SELECT max(id) as max_id FROM Teachers"
+        cursor.execute(query)
+        result = cursor.fetchone()
+        print(result['max_id'])
+        return result['max_id']
+
+def add_subjects(teacher_id, subjects_id_list):
+    with connection.cursor() as cursor:
+        for sub_id in subjects_id_list:
+            print(type(id))
+            query = "insert into SubjectsForTechers (teacher_id, subject_id) values({},{})".format(teacher_id, sub_id)
+            cursor.execute(query)
+        connection.commit()
+
+
