@@ -43,7 +43,6 @@ def get_max_id():
 def add_subjects(teacher_id, subjects_id_list):
     with connection.cursor() as cursor:
         for sub_id in subjects_id_list:
-            print(type(id))
             query = "insert into SubjectsForTechers (teacher_id, subject_id) values({},{})".format(teacher_id, sub_id)
             cursor.execute(query)
         connection.commit()
