@@ -34,6 +34,13 @@
 
 
 </head>
+
+<style> 
+.my-padding{
+    padding-left: 50px;
+}
+
+</style>
 <body class="host_version"> 
 
 	
@@ -216,17 +223,29 @@
 								  <label for="{{subject.get('id')}}">{{subject.get('description')}}</label><br>&nbsp&nbsp&nbsp
 									{%endfor%} -->
 
-
-                            <div class="form-group">
+                            <br><br><br>
+                            <div class="form">
                                 <div class="col-md-2">
-                                              <label for="gender" class="form-label">gender</label>
-                                              <select id="gender" class="form-select" name="gender">
-                                                <option selected>gender</option>
-                                                <option >male</option>
-                                                <option>female</option>
-                                              </select>
-                                            </div>
+                                    <select id="inputState" type="checkbox"   class="form-control" name="gender">
+                                        <option selected>filter by gender</option>
+                                        <option >all</option>
+                                        <option >male</option>
+                                        <option>female</option>
+                                        </select>
+                                 </div>
                             </div>
+                            {% for i in range(4)%}
+                                &nbsp
+                            {%endfor%}                            
+                            <label class="switch my-padding">
+                                    <input type="checkbox" name="likes" >
+                                    <span class="slider round"></span>
+                              </label>
+                              &nbsp&nbsp&nbsp
+                              <label for="likes"><b> sort by likes</b></label>
+                              {% for i in range(42)%}
+                                &nbsp
+                              {%endfor%}
                                 <button type="submit" class="btn btn-primary grd1"><i class="fa fa-search"></i></button>
 
                             </div>
@@ -261,12 +280,6 @@
 									<th scope="col">
 										First name
 									</th>
-									<th scope="col">
-										Email
-									</th>
-									<th scope="col">
-                                        Phone
-                                    </th>
                                     <th scope="col">
                                         Gender
                                     </th>
@@ -283,8 +296,6 @@
                                 <tr>
 									<td data-label="DOMAIN NAME">{{teacher.get("last_name")}}</td>
 									<td data-label="renewal pricing">{{teacher.get("first_name")}}</td>
-									<td data-label="renewal pricing">{{teacher.get("e_mail")}}</td>
-                                    <td data-label="transfer-price">{{teacher.get("phone")}}</td>
                                     <td data-label="transfer-price">{{teacher.get("gender")}}</td>
                                     <td data-label="transfer-price">{{teacher.get("aviable_after_lesson")}}</td>
                                     <td data-label="transfer-price">{{teacher.get("likes")}}</td>
