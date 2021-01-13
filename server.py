@@ -44,13 +44,37 @@ def add_teacher():
 @app.route('/teachers', methods=["GET"])
 def get_teachers():
     subject_id = request.args.get("subject")
+    search = request.args.get("search")
     gender = request.args.get("gender")
     subject_lst = subject_model.get_all()
-    teacher_lst = teacher_model.get_all()
-    if subject_id is None and gender is None:
-        return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
-    teacher_lst = teacher_model.get_by_subject(subject_id, gender)  
-    return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
+    teacher_list = teacher_model.get_all()
+    teacher_back = []
+    if search == '' or search == None:
+       teacher_back = teacher_list
+    else:
+        word_list = search.split(' ')
+        for teacher in teacher_list:
+            if subject_model.is_teacher_teach_subjects(teacher, word_list):
+                teacher_back.append(teacher)
+    for teacher in teacher_back:
+        if teacher["aviable_after_lesson"] == b"\x01":
+            teacher["aviable_after_lesson"] = 'yes'
+        else:
+            teacher["aviable_after_lesson"] = 'no'
+        print(teacher["aviable_after_lesson"]) 
+    return render_template('find_teacher.html', data={"teachers": teacher_back, "subjects": subject_lst })
+
+
+# @app.route('/teachers', methods=["GET"])
+# def get_teachers():
+#     subject_id = request.args.get("subject")
+#     gender = request.args.get("gender")
+#     subject_lst = subject_model.get_all()
+#     teacher_lst = teacher_model.get_all()
+#     if subject_id is None and gender is None:
+#         return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
+#     teacher_lst = teacher_model.get_by_subject(subject_id, gender)  
+#     return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
 
 
 if __name__ == "__main__":
