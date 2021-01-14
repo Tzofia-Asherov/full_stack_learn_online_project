@@ -56,12 +56,16 @@ def get_teachers():
         for teacher in teacher_list:
             if subject_model.is_teacher_teach_subjects(teacher, word_list):
                 teacher_back.append(teacher)
+    
     for teacher in teacher_back:
         if teacher["aviable_after_lesson"] == b"\x01":
             teacher["aviable_after_lesson"] = 'yes'
         else:
             teacher["aviable_after_lesson"] = 'no'
-        print(teacher["aviable_after_lesson"]) 
+
+    if gender == 'male' or gender =='female':
+        teacher_back = [t for t in teacher_back if t["gender"] == gender]
+
     return render_template('find_teacher.html', data={"teachers": teacher_back, "subjects": subject_lst })
 
 

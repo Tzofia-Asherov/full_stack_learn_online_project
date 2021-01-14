@@ -34,6 +34,13 @@
 
 
 </head>
+
+<style> 
+.my-padding{
+    padding-left: 50px;
+}
+
+</style>
 <body class="host_version"> 
 
 	
@@ -210,24 +217,41 @@
                                 <input type="text" class="form-control" name="search" id="domainnamehere" placeholder="Enter subject name here..">
 								<!-- <p>choose subject for learning:</p>&nbsp&nbsp&nbsp&nbsp -->
 
-                            <div class="form-group">
+
+									<!-- {% for subject in data["subjects"]%}
+								  <input type="radio" id="{{subject.get('id')}}" name="subject" value="{{subject.get('id')}}"/><br>
+								  <label for="{{subject.get('id')}}">{{subject.get('description')}}</label><br>&nbsp&nbsp&nbsp
+									{%endfor%} -->
+
+                            <br><br><br>
+                            <div class="form">
                                 <div class="col-md-2">
-                                              <label for="gender" class="form-label">gender</label>
-                                              <select id="gender" class="form-select" name="gender">
-                                                <option selected>all</option>
-                                                <option >male</option>
-                                                <option>female</option>
-                                              </select>
-                                            </div>
+                                    <select id="inputState" type="checkbox"   class="form-control" name="gender">
+                                        <option selected>filter by gender</option>
+                                        <option >all</option>
+                                        <option >male</option>
+                                        <option>female</option>
+                                        </select>
+                                 </div>
                             </div>
+                            {% for i in range(4)%}
+                                &nbsp
+                            {%endfor%}                            
+                            <label class="switch my-padding">
+                                    <input type="checkbox" name="likes" >
+                                    <span class="slider round"></span>
+                              </label>
+                              &nbsp&nbsp&nbsp
+                              <label for="likes"><b> sort by likes</b></label>
+                              {% for i in range(42)%}
+                                &nbsp
+                              {%endfor%}
                                 <button type="submit" class="btn btn-primary grd1"><i class="fa fa-search"></i></button>
 
                             </div>
 
                             <hr>
                             <div class="clearfix"></div>
-
-
                         </div><!-- end checkdomain-wrapper -->
                     </form>
                 </div>
@@ -254,9 +278,6 @@
 									<th scope="col">
 										First name
 									</th>
-									<th scope="col">
-                                        Phone
-                                    </th>
                                     <th scope="col">
                                         Gender
                                     </th>
@@ -273,7 +294,6 @@
                                 <tr>
 									<td data-label="DOMAIN NAME"><a href="/teachers/{{teacher.get('id')}}">{{teacher.get("last_name")}}</a></td>
 									<td data-label="renewal pricing">{{teacher.get("first_name")}}</td>
-                                    <td data-label="transfer-price">{{teacher.get("phone")}}</td>
                                     <td data-label="transfer-price">{{teacher.get("gender")}}</td>
                                     <td data-label="transfer-price">{{teacher.get("aviable_after_lesson")}}</td>
                                     <td data-label="transfer-price">{{teacher.get("likes")}}</td>
