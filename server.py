@@ -46,6 +46,7 @@ def get_teachers():
     subject_id = request.args.get("subject")
     search = request.args.get("search")
     gender = request.args.get("gender")
+    likes = request.args.get("likes")
     subject_lst = subject_model.get_all()
     teacher_list = teacher_model.get_all()
     teacher_back = []
@@ -65,6 +66,10 @@ def get_teachers():
 
     if gender == 'male' or gender =='female':
         teacher_back = [t for t in teacher_back if t["gender"] == gender]
+    
+    if likes == 'on':
+        teacher_back = sorted(teacher_back, key=lambda k: k['likes'], reverse=True) 
+
 
     return render_template('find_teacher.html', data={"teachers": teacher_back, "subjects": subject_lst })
 
