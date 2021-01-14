@@ -44,6 +44,10 @@
     {
         background-color: white;
     }
+    .flex
+    {
+        display: flex;
+    }
 </style>
 <body class="host_version"> 
        <!--  Email Modal----------------------------------------------------- -->
@@ -309,22 +313,24 @@
                 </fieldset>
               
             </form>
+            <div class="flex">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 flex">
+                <input type="text" readonly name="likes" id="likes" class="form-control" value="{{data['teacher']['likes']}}">
+            </div>
+            <form action="/teachers/{{data['teacher']['id']}}" method="GET"><!--change to route-->
+                
+                <div class="text-left pd flex">  
+                    <input type="text" readonly name="like" id="like" class="form-control" value="1" style="display: none;">         
+                    <button  style="border:None" type="submit"><span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="fa fa-thumbs-up"></i></span></button>          
+                </div>
+            </form>
+        </div>
             <form action="/emails" method="POST"><!--change to route-->
                 <div class="text-left pd">
                     <a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#send_email"> <button  style="border:None" type="submit"><span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-mail"></i></span></button> </a>                   
                 </div>
             </form>
           
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <input type="text" readonly name="likes" id="likes" class="form-control" value="{{data['teacher']['likes']}}">
-            </div>
-            <form action="/teachers/{{data['teacher']['id']}}" method="GET"><!--change to route-->
-                
-                <div class="text-left pd">  
-                    <input type="text" readonly name="like" id="like" class="form-control" value="1" style="display: none;">         
-                    <button  style="border:None" type="submit"><span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="fa fa-thumbs-up"></i></span></button>          
-                </div>
-            </form>
         
 
 

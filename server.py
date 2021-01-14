@@ -37,7 +37,8 @@ def add_teacher():
 
     subject_lst = subject_model.get_all()
 
-    return render_template("success_page.html",  data={"subjects": subject_lst, "teachers": []})
+    content = "We save your details\nThanks for volunteering!!"
+    return render_template("success_page.html",  data={"subjects": subject_lst, "teachers": [],"content":content})
 
         
 
@@ -74,17 +75,6 @@ def get_teachers():
     return render_template('find_teacher.html', data={"teachers": teacher_back, "subjects": subject_lst })
 
 
-# @app.route('/teachers', methods=["GET"])
-# def get_teachers():
-#     subject_id = request.args.get("subject")
-#     gender = request.args.get("gender")
-#     subject_lst = subject_model.get_all()
-#     teacher_lst = teacher_model.get_all()
-#     if subject_id is None and gender is None:
-#         return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
-#     teacher_lst = teacher_model.get_by_subject(subject_id, gender)  
-#     return render_template('find_teacher.html', data={"teachers": teacher_lst, "subjects": subject_lst })
-
 @app.route('/teachers/<id_teacher>')
 def display_teacher(id_teacher):
     like = request.args.get("like", None)
@@ -106,7 +96,8 @@ def send_email():
     phone = request.form.get("phone")
     content = request.form.get("content")
     email_model.send_to_teacher(teacher_id, name, e_mail, phone, content)
-    return render_template("success_page.html", data={"subjects": [], "teachers": []})
+    content = "We send your details\nThe teacher will contact you soon!!"
+    return render_template("success_page.html", data={"subjects": [], "teachers": [],"content":content})
 
 
 if __name__ == "__main__":

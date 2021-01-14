@@ -33,14 +33,18 @@ CREATE TABLE SubjectsForTechers
     PRIMARY KEY (teacher_id,subject_id)
 );
 
--- USE learnOnlineDB;
--- drop table SubjectsForTechers
+/* USE learnOnlineDB;
+drop table SubjectsForTechers;
 
--- USE learnOnlineDB;
--- drop table Subjects
+USE learnOnlineDB;
+drop table Subjects;
+drop table Comments;
 
--- USE learnOnlineDB;
--- drop table Teachers
+
+USE learnOnlineDB;
+drop table Teachers;  */
+
+
 USE learnOnlineDB;
 select * from SubjectsForTechers
 USE learnOnlineDB;
@@ -63,3 +67,5 @@ CREATE TABLE Comments
     img VARCHAR(100),
     FOREIGN KEY(teacher_id) REFERENCES Teachers(id)
 );
+
+

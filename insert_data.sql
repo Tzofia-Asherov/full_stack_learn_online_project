@@ -1,6 +1,6 @@
 USE learnOnlineDB;
 insert into  Teachers(first_name, last_name, e_mail, phone, likes, gender, aviable_after_lesson) 
-values ("Gad", "Barak", "gadBarak@gmail.com", '0504120411' , 0, 'male', True );
+values ("Gad", "Barak", "rivkaover@gmail.com", '0504120411' , 0, 'male', True );
 
 USE learnOnlineDB;
 insert into  Teachers(first_name, last_name, e_mail, phone, likes, gender, aviable_after_lesson) 
@@ -11,14 +11,14 @@ insert into  Teachers(first_name, last_name, e_mail, phone, likes, gender, aviab
 values ("Mirian", "ben-shimon", "mBenS@gmail.com", '0522217745' , 0, 'female', True );
 
 
-
+USE learnOnlineDB;
 insert into Subjects ( description, category)
-values ("Linear Algebra", 'Algebra'),
-        ("Boolean Algebra", 'Algebra'),
+values ("Linear Algebra", 'Math'),
+        ("Boolean Algebra", 'Math'),
         ("Article", 'English'),
         ("Writing", 'English'),
-        ("c++", 'software'),
-        ("python", 'software');
+        ("c++", 'Software'),
+        ("python", 'Software');
 
 -- USE learnOnlineDB;
 -- insert into SubjectsForTechers(teacher_id, subject_id)
@@ -116,3 +116,13 @@ USE learnOnlineDB;
 update  Teachers
 set likes  = 45
 where id =17;
+
+
+USE learnOnlineDB;
+insert into Comments values(default,1,"Awesome Teachers!","Explain to you how all this mistaken idea of math" ,"Jacques Philips","images/testi_02.png");
+USE learnOnlineDB;
+insert into Comments values(default,2,"Great & Talented Teachers!","The great teacher I found here helped me a lot" ,"Venanda Mercy","images/testi_03.png");
+USE learnOnlineDB;
+insert into Comments values(default,3,"Wondefull!","I've enjoy so much' and for free!!" ,"Yosef Cohen","images/testi_01.png");
+USE learnOnlineDB;
+select * from Comments;
