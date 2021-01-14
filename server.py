@@ -104,10 +104,5 @@ def send_email():
     return render_template("success_page.html", data={"subjects": [], "teachers": []})
 
 
-@app.route('/like')
-def like():
-    #get id, update like and return it
-    return str(2)
-
 if __name__ == "__main__":
     app.run(port=3010, debug=True)
