@@ -70,3 +70,10 @@ def get_one(teacher_id):
         cursor.execute(query)
         result = cursor.fetchall()
         return result
+
+def update_like(teacher_id):
+    with connection.cursor() as cursor:
+        query = """UPDATE Teachers SET
+                likes = likes + 1 where id = {}""".format(teacher_id)
+        cursor.execute(query)
+        connection.commit()

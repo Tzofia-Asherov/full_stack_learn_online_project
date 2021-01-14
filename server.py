@@ -78,6 +78,10 @@ def get_teachers():
 
 @app.route('/teachers/<id_teacher>')
 def display_teacher(id_teacher):
+    like = request.args.get("like", None)
+    if like:
+        teacher_model.update_like(id_teacher)
+
     subject_lst = teacher_model.get_subjects(id_teacher)
     teacher = teacher_model.get_one(id_teacher)[0]
     data={"teacher": teacher, "subjects": subject_lst }
@@ -96,7 +100,8 @@ def send_email():
     return render_template("success_page.html", data={"subjects": [], "teachers": []})
 
 
-@app.route('/like'):
+@app.route('/like')
+def like():
     #get id, update like and return it
     return str(2)
 
